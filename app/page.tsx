@@ -131,13 +131,11 @@ export default function Home() {
   async function handleGenerateDeals() {
     const loc = locationInput.trim();
     if (selectedServices.length === 0 || !loc) return;
-    const refPayload: DealRefinement = { ...refinement, services: [...selectedServices] };
-    setRefinement(refPayload);
     setUiMode("loading");
     await executeDealGeneration({
       services: selectedServices,
       location: loc,
-      refinement: refPayload
+      refinement
     });
     setUiMode("results");
   }
